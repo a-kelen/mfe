@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { mount as mountAuthApp } from 'auth/AuthApp';
 
-const AuthApp = () => {
+const AuthApp = ({ onSignIn }) => {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -14,7 +14,8 @@ const AuthApp = () => {
                 if (history.location.pathname !== nextPathname) {
                     history.push(nextPathname);
                 }
-            }
+            },
+            onSignIn 
         });
 
         history.listen(onParentNavigate);
